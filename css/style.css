@@ -1,0 +1,92 @@
+:root {
+    --color-light: #DDDDDD;
+    --color-dark: #222222;
+    --color-led-container: #333333;
+    --color-red-on: #ff0000;
+    --color-red-off: #ff000044;
+    --color-blue-on: #0000ff;
+    --color-blue-off: #0000ff44;
+    --color-yellow-on: #ffff00;
+    --color-yellow-off: #ffff0044;
+    --color-white-on: #ffffff;
+    --color-white-off: #ffffff44;
+}
+
+body {
+    background-color: var(--color-dark);
+    color: var(--color-light);
+    font-family: 'Quicksand', sans-serif;
+    font-family: 'Roboto Mono', monospace;
+    padding: 0 2vw 0 2vw;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+hr {
+    width: 90vw;
+}
+
+hr {
+    color: var(--color-light);
+    margin-bottom: 20px;
+}
+
+div.column, div.row {
+    width: fit-content;
+    height: fit-content;
+    display: flex;
+    align-content: space-between;
+    justify-content: space-between;
+}
+div.column {
+    flex-direction: column;
+    height: auto;
+}
+div.row {flex-direction: row;}
+
+div.led-container-t, div.led-container-b, div.led-container-r, div.led-container-l {
+    display: flex;
+    background-color: var(--color-led-container);
+    border-radius: 10px;
+    margin: 2px;
+}
+div.led-container-t, div.led-container-b {
+    flex-direction: row;
+    width: 200px;
+    height: 50px;
+    justify-content: center;
+}
+div.led-container-t {align-items: end;}
+div.led-container-r, div.led-container-l {
+    flex-direction: column;
+    width: 50px;
+    height: 250px;
+    margin: 54px 2px;
+    justify-content: center;
+}
+div.led-container-l {align-items: end;}
+
+div.led-t, div.led-b {
+    height: 30px;
+    width: 25px;
+    margin: 0 15px;
+}
+div.led-t {border-radius: 12px 12px 0 0;}
+div.led-b {border-radius: 0 0 12px 12px;}
+div.led-r, div.led-l {
+    height: 25px;
+    width: 30px;
+    margin: 15px 0;
+}
+div.led-l {border-radius: 12px 0 0 12px;}
+div.led-r {border-radius: 0 12px 12px 0;}
+
+.red.on {background-color: var(--color-red-on);}
+.red.off {background-color: var(--color-red-off);}
+.blue.on {background-color: var(--color-blue-on);}
+.blue.off {background-color: var(--color-blue-off);}
+.yellow.on {background-color: var(--color-yellow-on);}
+.yellow.off {background-color: var(--color-yellow-off);}
+.white.on {background-color: var(--color-white-on);}
+.white.off {background-color: var(--color-white-off);}
