@@ -90,3 +90,15 @@ div.led-r {border-radius: 0 12px 12px 0;}
 .yellow.off {background-color: var(--color-yellow-off);}
 .white.on {background-color: var(--color-white-on);}
 .white.off {background-color: var(--color-white-off);}
+
+.off {box-shadow: 0 0 0;}
+.led-r.blue.on {box-shadow: 10px 0 30px var(--color-blue-on);}
+.led-r.white.on {box-shadow: 10px 0 30px var(--color-white-on);}
+.led-l.red.on {box-shadow: -10px 0 30px var(--color-red-on);}
+.led-l.white.on {box-shadow: -10px 0 30px var(--color-white-on);}
+.led-t.red.on {box-shadow: 0 -10px 30px var(--color-red-on);}
+.led-t.white.on {box-shadow: 0 -10px 30px var(--color-white-on);}
+.led-t.blue.on {box-shadow: 0 -10px 30px var(--color-blue-on);}
+.led-b.red.on {box-shadow: 0 10px 30px var(--color-red-on);}
+.led-b.yellow.on {box-shadow: 0 10px 30px var(--color-yellow-on);}
+.led-b.blue.on {box-shadow: 0 10px 30px var(--color-blue-on);}

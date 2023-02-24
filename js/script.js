@@ -42,6 +42,7 @@ async function loop() {
     let time = 0;
     let mod1000;
     let mod500;
+    let mod250;
 
     while(true) {
         switch(key) {
@@ -107,51 +108,18 @@ async function loop() {
                 b1 = digitalFromBoolean(mod500 <= 200);
                 break;
             case '1':
-                mod1000 = time % 1000;
-                mod500 = time % 500;
-                r1 = digitalFromBoolean(mod500 <= 250);
-                r2 = digitalFromBoolean(mod500 > 250);
-                ry = digitalFromBoolean(mod500 <= 250);
-                wyl = digitalFromBoolean(mod1000 > 500);
-                wyr = digitalFromBoolean(mod1000 <= 500);
-                by = digitalFromBoolean(mod500 > 250);
-                b2 = digitalFromBoolean(mod500 <= 250);
-                b1 = digitalFromBoolean(mod500 > 250);
-                break;
-            case '2':
-                mod1000 = time % 1000;
+                mod250 = time % 250;
                 mod500 = time % 500;
                 r1 = digitalFromBoolean(mod500 <= 250);
                 r2 = digitalFromBoolean(mod500 <= 250);
                 ry = digitalFromBoolean(mod500 <= 250);
-                wyl = digitalFromBoolean(mod1000 > 500);
-                wyr = digitalFromBoolean(mod1000 <= 500);
+                wyl = digitalFromBoolean(mod250 > 125);
+                wyr = digitalFromBoolean(mod250 <= 125);
                 by = digitalFromBoolean(mod500 > 250);
                 b2 = digitalFromBoolean(mod500 > 250);
                 b1 = digitalFromBoolean(mod500 > 250);
                 break;
-            case '3':
-                if(time % 2000 < 1000) {
-                    r1 = digitalFromBoolean((time + 750) % 1000 > 750);
-                    r2 = digitalFromBoolean((time + 500) % 1000 > 750);
-                    ry = digitalFromBoolean((time + 250) % 1000 > 750);
-                    wyl = digitalFromBoolean(time % 1000 > 750);
-                    wyr = digitalFromBoolean(time % 1000 > 750);
-                    by = digitalFromBoolean((time + 250) % 1000 > 750);
-                    b2 = digitalFromBoolean((time + 500) % 1000 > 750);
-                    b1 = digitalFromBoolean((time + 750) % 1000 > 750);
-                } else {
-                    r1 = digitalFromBoolean((time - 750) % 1000 < 250);
-                    r2 = digitalFromBoolean((time - 500) % 1000 < 250);
-                    ry = digitalFromBoolean((time - 250) % 1000 < 250);
-                    wyl = digitalFromBoolean(time % 1000 < 250);
-                    wyr = digitalFromBoolean(time % 1000 < 250);
-                    by = digitalFromBoolean((time - 250) % 1000 < 250);
-                    b2 = digitalFromBoolean((time - 500) % 1000 < 250);
-                    b1 = digitalFromBoolean((time - 750) % 1000 < 250);
-                }
-                break;
-            case '4':
+            case '2':
                 if(time % 1000 < 500) {
                     r1 = digitalFromBoolean((time + 375) % 500 >= 375);
                     r2 = digitalFromBoolean((time + 250) % 500 >= 375);
@@ -173,8 +141,8 @@ async function loop() {
                     b1 = digitalFromBoolean(time % 500 < 125);
                 }
                 break;
-            case '5':
-                let mod250 = time % 250;
+            case '3':
+                mod250 = time % 250;
                 let mod125 = time % 125;
                 let mod12562 = (time + 62) % 125;
                 r1 = digitalFromBoolean(mod125 <= 60);
@@ -185,6 +153,99 @@ async function loop() {
                 by = digitalFromBoolean(mod12562 <= 60);
                 b2 = digitalFromBoolean(mod12562 <= 60);
                 b1 = digitalFromBoolean(mod12562 <= 60);
+                break;
+            case '4':
+                let mod8000 = time % 5000;
+                if(mod8000 < 1000) {
+                    if(time % 1000 < 500) {
+                        r1 = digitalFromBoolean((time + 375) % 500 >= 375);
+                        r2 = digitalFromBoolean((time + 250) % 500 >= 375);
+                        ry = digitalFromBoolean((time + 125) % 500 >= 375);
+                        wyl = digitalFromBoolean(time % 500 >= 375);
+                        wyr = digitalFromBoolean((time + 375) % 500 >= 375);
+                        by = digitalFromBoolean((time + 250) % 500 >= 375);
+                        b2 = digitalFromBoolean((time + 125) % 500 >= 375);
+                        b1 = digitalFromBoolean(time % 500 >= 375);
+                    } else {
+                        r1 = digitalFromBoolean((time - 375) % 500 < 125);
+                        r2 = digitalFromBoolean((time - 250) % 500 < 125);
+                        ry = digitalFromBoolean((time - 125) % 500 < 125);
+                        wyl = digitalFromBoolean(time % 500 < 125);
+                        wyr = digitalFromBoolean((time - 375) % 500 < 125);
+                        by = digitalFromBoolean((time - 250) % 500 < 125);
+                        b2 = digitalFromBoolean((time - 125) % 500 < 125);
+                        b1 = digitalFromBoolean(time % 500 < 125);
+                    }
+                } else if(mod8000 < 2000) {
+                    r1 = digitalFromBoolean(time % 250 < 125);
+                    r2 = digitalFromBoolean(time % 250 < 125);
+                    ry = digitalFromBoolean(time % 250 < 125);
+                    wyl = digitalFromBoolean(time % 250 >= 125);
+                    wyr = digitalFromBoolean(time % 250 < 125);
+                    by = digitalFromBoolean(time % 250 >= 125);
+                    b2 = digitalFromBoolean(time % 250 >= 125);
+                    b1 = digitalFromBoolean(time % 250 >= 125);
+                } else if(mod8000 < 3000) {
+                    if(time % 1000 < 500) {
+                        r1 = LOW;
+                        r2 = LOW;
+                        ry = digitalFromBoolean(time % 250 < 125);
+                        wyl = digitalFromBoolean(time % 250 < 125);
+                        wyr = LOW;
+                        by = LOW;
+                        b2 = digitalFromBoolean(time % 250 < 125);
+                        b1 = digitalFromBoolean(time % 250 < 125);
+                    } else {
+                        r1 = digitalFromBoolean(time % 250 < 125);
+                        r2 = digitalFromBoolean(time % 250 < 125);
+                        ry = LOW;
+                        wyl = LOW;
+                        wyr = digitalFromBoolean(time % 250 < 125);
+                        by = digitalFromBoolean(time % 250 < 125);
+                        b2 = LOW;
+                        b1 = LOW;
+                    }
+                } else if(mod8000 < 4000) {
+                    if(time % 1000 < 500) {
+                        r1 = digitalFromBoolean(time % 250 < 125);
+                        r2 = digitalFromBoolean(time % 250 < 125);
+                        ry = digitalFromBoolean(time % 250 < 125);
+                        wyl = digitalFromBoolean(time % 250 < 125);
+                        wyr = LOW;
+                        by = LOW;
+                        b2 = LOW;
+                        b1 = LOW;
+                    } else {
+                        r1 = LOW;
+                        r2 = LOW;
+                        ry = LOW;
+                        wyl = LOW;
+                        wyr = digitalFromBoolean(time % 250 < 125);
+                        by = digitalFromBoolean(time % 250 < 125);
+                        b2 = digitalFromBoolean(time % 250 < 125);
+                        b1 = digitalFromBoolean(time % 250 < 125);
+                    }
+                } else if(mod8000 < 5000) {
+                    if(time % 1000 < 500) {
+                        r1 = digitalFromBoolean((time + 375) % 500 > 375);
+                        r2 = digitalFromBoolean((time + 250) % 500 > 375);
+                        ry = digitalFromBoolean((time + 125) % 500 > 375);
+                        wyl = digitalFromBoolean(time % 500 > 375);
+                        wyr = digitalFromBoolean(time % 500 > 375);
+                        by = digitalFromBoolean((time + 125) % 500 > 375);
+                        b2 = digitalFromBoolean((time + 250) % 500 > 375);
+                        b1 = digitalFromBoolean((time + 375) % 500 > 375);
+                    } else {
+                        r1 = digitalFromBoolean((time - 375) % 500 < 125);
+                        r2 = digitalFromBoolean((time - 250) % 500 < 125);
+                        ry = digitalFromBoolean((time - 125) % 500 < 125);
+                        wyl = digitalFromBoolean(time % 500 < 125);
+                        wyr = digitalFromBoolean(time % 500 < 125);
+                        by = digitalFromBoolean((time - 125) % 500 < 125);
+                        b2 = digitalFromBoolean((time - 250) % 500 < 125);
+                        b1 = digitalFromBoolean((time - 375) % 500 < 125);
+                    }
+                }
                 break;
         }
         digitalOutput(er1, r1);
