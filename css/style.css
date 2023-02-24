@@ -102,3 +102,21 @@ div.led-r {border-radius: 0 12px 12px 0;}
 .led-b.red.on {box-shadow: 0 10px 30px var(--color-red-on);}
 .led-b.yellow.on {box-shadow: 0 10px 30px var(--color-yellow-on);}
 .led-b.blue.on {box-shadow: 0 10px 30px var(--color-blue-on);}
+
+.cover {
+    height: 250px;
+    border-radius: 10px;
+    margin: 2px;
+}
+.cover.red {
+    width: 608px;
+    background-color: var(--color-red-off);
+}
+.cover.white {
+    width: 404px;
+    background-color: var(--color-white-off);
+}
+.cover.blue {
+    width: 608px;
+    background-color: var(--color-blue-off);
+}
